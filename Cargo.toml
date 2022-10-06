@@ -1,0 +1,25 @@
+# based off https://github.com/anisse/tcpkill
+[package]
+name = "network_killer"
+description = "Kills active connections and prevents new ones"
+authors = ["Cody Ho <codyho@stanford.edu>"]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-2.0-or-later"
+
+[dependencies]
+argparse = "0.2.2"
+clap = "4.0.8"
+futures = { version = "0.3", default-features = false }
+netlink-sys = "0.8.3"
+netlink-packet-sock-diag = "0.3.1"
+nix = "0.25.0"
+procfs = "0.14.1"
+rtnetlink = "0.11.0"
+tokio = { version = "1", features = ["full"] }
+uapi = "0.2.0"
+
+[profile.release]
+lto = true
+strip = "debuginfo"
+opt-level = "s"
